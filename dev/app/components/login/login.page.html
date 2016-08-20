@@ -1,0 +1,43 @@
+<!--<section class="login-wrapper">
+    <form data-ng-submit="authentication(credentials)">
+        <p>
+            <label>User name</label>
+            <input type="text" data-ng-model="credentials.username" />
+        </p>
+        <p>
+            <label>Password</label>
+            <input type="password" data-ng-model="credentials.password" />
+        </p>
+        <input type="submit" />
+    </form>
+</section>-->
+<!--<div class="login-container">
+    <div id="output" class="animated fadeInUp alert-danger alert">sorry enter a username </div>
+    <div class="avatar" style="background-image: url(&quot;http://api.randomuser.me/0.3.2/portraits/women/35.jpg&quot;);"></div>
+    <div class="form-box">
+        <form action="" method="">
+            <input name="user" type="text" placeholder="username" style="height: auto; padding: 10px; margin: 0px; opacity: 1;">
+            <input type="password" placeholder="password" style="height: auto; padding: 10px; margin: 0px; opacity: 1;">
+            <button class="btn btn-block login btn-default" type="submit">continue</button>
+        </form>
+    </div>
+</div>-->
+<div class="card card-container">
+    <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
+    <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
+    <p id="profile-name" class="profile-name-card"></p>
+    <form class="form-signin" data-ng-submit="authentication(credentials)">
+        <!--<span id="reauth-email" class="reauth-email"></span>-->
+        <input type="text" id="inputUserrname" class="form-control" data-ng-model="credentials.username" placeholder="User name" required autofocus>
+        <input type="password" id="inputPassword" class="form-control" data-ng-model="credentials.password" placeholder="Password" required>
+        <div id="remember" class="checkbox" style="margin-bottom: 10px; visibility: hidden;">
+            <label>
+                <input type="checkbox" value="remember-me"> Remember me
+            </label>
+        </div>
+        <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Login</button>
+    </form><!-- /form -->
+    <a href="#" class="forgot-password">
+        Forgot the password?
+    </a>
+</div><!-- /card-container -->

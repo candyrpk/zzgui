@@ -9,8 +9,9 @@ var del = require('del');
  
 var paths = {
   createDist: 'dev/**/*',
-  scripts: ['dev/app/app.module.js', 'dev/app/app.routes.js', 'dev/app/components/**/*.js'],
-  vendorScripts: 'dev/assets/vendor/*.js',
+  scripts: ['dev/app/app.module.js', 'dev/app/app.routes.js', 'dev/app/authModule/*.js','dev/app/components/**/*.js'],
+  vendorScripts: ['dev/assets/lib/main/jquery-2.1.4.min.js', 'dev/assets/lib/main/angular.min.js', 'dev/assets/lib/*.js'],
+  vendorCSS: 'dev/assets/csslib/*.css',
   images: 'client/img/**/*',
   stylus: 'dev/assets/stylus/application.styl'
 };
@@ -34,7 +35,7 @@ gulp.task('stylus', function () {
     .pipe(sourcemaps.init())
     .pipe(stylus())
     .pipe(sourcemaps.write('.'))
-    .pipe(gulp.dest('dist/css'));
+    .pipe(gulp.dest('dev/assets/css'));
 });
 
 gulp.task('scripts', function() {
@@ -43,16 +44,23 @@ gulp.task('scripts', function() {
   return gulp.src(paths.scripts)
     .pipe(sourcemaps.init())
       .pipe(uglify())
-      .pipe(concat('all.min.js'))
+      .pipe(concat('application.min.js'))
     .pipe(sourcemaps.write())
-    .pipe(gulp.dest('dist/js'));
+    .pipe(gulp.dest('dev/assets/js'));
 });
 
 gulp.task('vendor-scripts', function() {
   // Copy all vendor JavaScript 
   return gulp.src(paths.vendorScripts)
-    .pipe(concat('all.min.js'))
-    .pipe(gulp.dest('dist/vendor'));
+    .pipe(concat('vendor.min.js'))
+    .pipe(gulp.dest('dev/assets/vendor'));
+});
+
+gulp.task('vendor-css', function() {
+  // Copy all vendor JavaScript 
+  return gulp.src(paths.vendorCSS)
+    .pipe(concat('vendor.min.css'))
+    .pipe(gulp.dest('dev/assets/vendor'));
 });
 
 // Copy all static images 
@@ -73,4 +81,4 @@ gulp.task('watch', function() {
  
 // The default task (called when you run `gulp` from cli) 
 //gulp.task('default', ['create', 'watch', 'stylus', 'scripts', 'vendor-scripts', 'images']);
-gulp.task('default', ['watch', 'stylus', 'scripts', 'vendor-scripts']);
+gulp.task('default', ['stylus', 'scripts', 'vendor-scripts', 'vendor-css']);
