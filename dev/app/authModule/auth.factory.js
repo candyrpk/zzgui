@@ -69,8 +69,8 @@ angular.module('rubyTracker').factory('AuthFactory',
                         token: token
                     }
                 };
-
-                $http.defaults.headers.common['Authorization'] = 'Bearer ' + token; // jshint ignore:line
+                
+                //$http.defaults.headers.common['Authorization'] = 'Bearer ' + token; // jshint ignore:line
                 //$cookies.put('globals', window.btoa($rootScope.globals));
                 localStorage.setItem('globals', token);
             };
@@ -79,7 +79,6 @@ angular.module('rubyTracker').factory('AuthFactory',
                 $rootScope.globals = {};
                 //$cookies.remove('globals');
                 localStorage.setItem('globals','');
-                $http.defaults.headers.common.Authorization = 'Bearer ';
             };
 
             return service;

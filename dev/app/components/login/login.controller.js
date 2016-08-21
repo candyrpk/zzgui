@@ -8,7 +8,7 @@ angular.module('rubyTracker').controller('LoginController', ['$scope', '$state',
         AuthFactory.Login(params, function (response) {
             if (response.success) {
                 AuthFactory.SetCredentials(params.username, params.password, response.data);
-                $state.go('app.dashboard');
+                $state.go('app.register');
             } else {
                 console.log("error in login");
             }

@@ -43,14 +43,10 @@ var rubyTracker = angular.module('rubyTracker', ["ngCookies", "ui.router"])
       pageTitle: 'Register'
     });
 }]).run(['$rootScope', '$http', '$state', '$stateParams', '$location', '$cookies', function ($rootScope, $http, $state, $stateParams, $location, $cookies) {
-    $rootScope.pageTitle = $state.current.pageTitle;
-    
-    if (localStorage.getItem('globals')) {
-        $http.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('globals'); // jshint ignore:line
-    }
+    //$rootScope.pageTitle = $state.current.pageTitle;
     $rootScope.$on('$stateChangeStart',
         function (event, toState, toParams, fromState, fromParams) {
-            //$rootScope.pageTitle = toState.pageTitle;
+            $rootScope.pageTitle = toState.pageTitle;
             // transitionTo() promise will be rejected with
             // a 'transition prevented' error
             // redirect to login page if not logged in and trying to access a restricted page
